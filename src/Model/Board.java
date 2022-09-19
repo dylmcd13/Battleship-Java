@@ -1,6 +1,6 @@
 package Model;
 
-public class Board {
+public class Board extends Player{
   
   private Coordinate[][] grid;
 
