@@ -1,5 +1,6 @@
 package Model;
 
+/** Coordinate class */
 public class Coordinate {
   /** X coordinate */
   private int x;
@@ -15,7 +16,7 @@ public class Coordinate {
   /**
    * @return X coordinate
    */
-  public int getXCoordinate(){
+  public int getX(){
     return x;
   }
 

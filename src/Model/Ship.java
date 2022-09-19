@@ -55,7 +55,10 @@ public class Ship {
     this.lengthOfShip = lengthOfShip;
   }
 
-
+  /**
+   * Set name of ship
+   * @param shipName Ship name
+   */
   public void setNameOfShip(String shipName) {
     this.shipName = shipName;
   }

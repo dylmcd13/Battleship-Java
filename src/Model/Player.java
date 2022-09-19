@@ -11,8 +11,8 @@ public class Player {
   /** Default Constructor for Player */
   public Player(){
     playerTurn = false;
-    shotLocation.setX(0);
-    shotLocation.setY(0);
+    Coordinate c = new Coordinate(0, 0);
+    shotLocation = c;
   }
 
   /**
