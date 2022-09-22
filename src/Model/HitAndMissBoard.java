@@ -1,23 +1,29 @@
 package Model;
+import java.util.ArrayList;
 
 public class HitAndMissBoard extends Board {
-  private Coordinate[] hitLocations;
+  private ArrayList<Coordinate> hitLocations;
 
 
-  private Coordinate[] missLocations;
+  private ArrayList<Coordinate> missLocations;
 
 
-  public Coordinate[] getHitLocations() {
+  public ArrayList<Coordinate> getHitLocations() {
     return hitLocations;
   }
 
 
-  public Coordinate[] getMissLocations() {
+  public ArrayList<Coordinate> getMissLocations() {
     return missLocations;
   }
 
 
-  public void setHitLocation(Coordinate c){
-    
+  public void addHitLocation(Coordinate c){
+    hitLocations.add(c);
+  }
+
+
+  public void addMissLocation(Coordinate c){
+    missLocations.add(c);
   }
 }
