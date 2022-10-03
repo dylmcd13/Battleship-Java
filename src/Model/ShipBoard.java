@@ -1,6 +1,6 @@
 package Model;
 import java.util.ArrayList;
-public class ShipBoard {
+public class ShipBoard extends Board{
   private ArrayList<Coordinate> hitLocations;
 
 
