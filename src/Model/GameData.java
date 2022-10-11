@@ -6,17 +6,17 @@ public class GameData {
     Pegs peg;
     boolean playerTurn;
 
-    public getHit()
+    public Pegs getHit()
     {
         return peg;            
     }   
 
-    public getShips()
+    public Ship getShips()
     {
         return ships;
     }
 
-    public getPlayerTurn()
+    public boolean getPlayerTurn()
     {
         return playerTurn;
     }
