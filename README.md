@@ -1,2 +1,2 @@
 # Battleship
-Firing implementation
+Firing implementation test
