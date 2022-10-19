@@ -1,14 +1,14 @@
 package Model;
 
 public class Carrier {
-  private Coordinate[] placedOn;
+  private Space[] placedOn;
   
   /** Must be length 5 */
-  Carrier(Coordinate[] c){
+  Carrier(Space[] c){
     placedOn = c;
   }
 
-  public Coordinate[] getPlacedOn(){
+  public Space[] getPlacedOn(){
     return placedOn;
   }
 }
