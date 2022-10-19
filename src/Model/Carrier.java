@@ -1,14 +1,29 @@
 package Model;
 
-public class Carrier {
-  private Space[] placedOn;
+public class Carrier implements Ship{
+  private Space placedOn;
   
+  /** If ship is destroyed */
+	private boolean destroyed = false;
+
+  /** length of ship */
+	private final int lengthOfShip = 5;
+  
+  /** Name of Ship */
+	private final String shipName = "Carrier";
+
   /** Must be length 5 */
-  Carrier(Space[] c){
-    placedOn = c;
+  Carrier(Space space){
+    placedOn = space;
   }
 
-  public Space[] getPlacedOn(){
+  public Space getPlacedOn(){
     return placedOn;
   }
+
+  public String getShipName(){ return shipName; }
+
+  public int getLengthOfShip(){ return lengthOfShip; }
+
+  public boolean getDestroyed(){ return destroyed; }
 }
