@@ -15,4 +15,18 @@ public class Board extends Player{
     }
   }
 
+  /**
+   * Adds ship to the grid
+   * &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+   * TODO:
+   * Check if ship is inBounds and not on top another ship
+   * &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+   */
+  public void addShip(Space[][] grid, Ship ship){
+    int shipLength = ship.getLengthOfShip();
+    String shipName = ship.getShipName();
+
+
+  }
+
 }
