@@ -4,7 +4,7 @@ public class Board extends Player{
   
   private Space[][] grid;
 
-  /** Default Contructor puts corresponding coordinate into grid */
+  /** Default Constructor puts corresponding coordinate into grid */
   Board() {
     grid = new Space[10][10];
     for(int i=0;i<10;i++){
@@ -27,6 +27,10 @@ public class Board extends Player{
     String shipName = ship.getShipName();
 
 
+  }
+  
+  public Space[][] getGrid(){
+	  return grid;
   }
 
 }
