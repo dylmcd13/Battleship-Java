@@ -1,7 +1,7 @@
 package Model;
 
 public class Battleship {
-  private Space placedOn;
+  private Space[] placedOn = new Space[4];
   
   /** If ship is destroyed */
 	private boolean destroyed = false;
@@ -13,11 +13,11 @@ public class Battleship {
 	private final String shipName = "Battleship";
   
   /** Must be length 4 */
-  Battleship(Space space){
+  Battleship(Space[] space){
     placedOn = space;
   }
 
-  public Space getPlacedOn(){ return placedOn; }
+  public Space[] getPlacedOn(){ return placedOn; }
 
   public int getLengthOfShip(){ return lengthOfShip; }
 
