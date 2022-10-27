@@ -3,16 +3,20 @@ package Model;
 @SuppressWarnings("unused")
 public class Space {
   private Coordinate coordinate;
-  private Ship ship;
+  private boolean shipHere;
   private Pegs peg;
   
   public Space(Coordinate c) {
-	  ship = null;
+	  shipHere = false;
 	  peg = null;
 	  coordinate = c;
   }
   
   public Coordinate getCoordinate() {
 	  return coordinate;
+  }
+
+  public boolean isShipHere(){
+    return shipHere;
   }
 }

@@ -1,7 +1,7 @@
 package Model;
 
 public class Cruiser {
-  private Space placedOn;
+  
   
   /** If ship is destroyed */
 	private boolean destroyed = false;
@@ -11,13 +11,20 @@ public class Cruiser {
   
   /** Name of Ship */
 	private final String shipName = "Cruiser";
+
+
+  private Space[] placedOn = new Space[lengthOfShip];
   
+  Cruiser(){
+    
+  }
+
   /** Must be length 3 */
-  Cruiser(Space space){
+  Cruiser(Space[] space){
     placedOn = space;
   }
 
-  public Space getPlacedOn(){ return placedOn; }
+  public Space[] getPlacedOn(){ return placedOn; }
 
   public int getLengthOfShip(){ return lengthOfShip; }
 

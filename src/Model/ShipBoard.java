@@ -11,6 +11,9 @@ public class ShipBoard extends Board{
     return hitLocations;
   }
 
+  ShipBoard(){
+    super();
+  }
 
   public ArrayList<Coordinate> getMissLocations() {
     return missLocations;
@@ -25,4 +28,10 @@ public class ShipBoard extends Board{
   public void addMissLocation(Coordinate c){
     missLocations.add(c);
   }
+
+  public Space[][] getGrid(){
+    return super.getGrid();
+  }
+
+  
 }

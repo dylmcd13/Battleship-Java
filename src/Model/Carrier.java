@@ -1,7 +1,7 @@
 package Model;
 
 public class Carrier implements Ship{
-  private Space placedOn;
+  
   
   /** If ship is destroyed */
 	private boolean destroyed = false;
@@ -12,12 +12,19 @@ public class Carrier implements Ship{
   /** Name of Ship */
 	private final String shipName = "Carrier";
 
+
+  public Space[] placedOn = new Space[lengthOfShip];
+
+  Carrier(){
+    
+  }
+
   /** Must be length 5 */
-  Carrier(Space space){
+  Carrier(Space[] space){
     placedOn = space;
   }
 
-  public Space getPlacedOn(){
+  public Space[] getPlacedOn(){
     return placedOn;
   }
 

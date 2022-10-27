@@ -15,50 +15,55 @@ public class Board extends Player{
     }
   }
 
-  /**
-   * Adds ship to the grid
-   * &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-   * TODO:
-   * Check if ship is inBounds and not on top another ship
-   * &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-   */
-  public void addShip(Space[][] grid, Ship ship){
-    int shipLength = ship.getLengthOfShip();
-    String shipName = ship.getShipName();
-
-
-  }
   
+  public Space getSpace(int x, int y){
+    return grid[x][y];
+  }
+
   public Space[][] getGrid(){
 	  return grid;
   }
+  
+  
   /**
    * Prolly make it so each Space has a square to display instead of doing this
+   * 
    */
   public void displayBoard() {
 	  StringBuilder sb = new StringBuilder();
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
-	  sb.append("---------------------------------------------------\n");
-	  System.out.println(sb.toString());
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
+	  // sb.append("---------------------------------------------------\n");
+	  // System.out.println(sb.toString());
+
+    for(int i=0;i<10;i++){
+      for(int j=0;j<10;j++){
+        Space currentSpace = grid[i][j];
+        if(!currentSpace.isShipHere() && j != 9){ //If no ship at space and not end of grid
+          sb.append(" □ ");
+        }else if(!currentSpace.isShipHere() && j == 9){ //If no ship at space but is end of grid
+          sb.append(" □ \n");
+        }
+      }
+    }
   
   
   

@@ -1,7 +1,7 @@
 package Model;
 
 public class Battleship {
-  private Space[] placedOn = new Space[4];
+  
   
   /** If ship is destroyed */
 	private boolean destroyed = false;
@@ -11,6 +11,9 @@ public class Battleship {
   
   /** Name of Ship */
 	private final String shipName = "Battleship";
+
+
+  private Space[] placedOn = new Space[lengthOfShip];
   
   /** Must be length 4 */
   Battleship(Space[] space){

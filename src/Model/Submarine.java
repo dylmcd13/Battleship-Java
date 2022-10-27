@@ -1,7 +1,7 @@
 package Model;
 
 public class Submarine implements Ship{
-  private Space placedOn;
+  
   
   /** If ship is destroyed */
 	private boolean destroyed = false;
@@ -11,13 +11,16 @@ public class Submarine implements Ship{
   
   /** Name of Ship */
 	private final String shipName = "Submarine";
+
+
+  private Space[] placedOn = new Space[lengthOfShip];
   
   /** Must be length 3 */
-  Submarine(Space space){
+  Submarine(Space[] space){
     placedOn = space;
   }
 
-  public Space getPlacedOn(){
+  public Space[] getPlacedOn(){
     return placedOn;
   }
 
