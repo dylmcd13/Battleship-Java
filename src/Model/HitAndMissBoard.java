@@ -2,11 +2,16 @@ package Model;
 import java.util.ArrayList;
 
 public class HitAndMissBoard extends Board {
+
+
   private ArrayList<Coordinate> hitLocations;
 
 
   private ArrayList<Coordinate> missLocations;
 
+  HitAndMissBoard(){
+    super();
+  }
 
   public ArrayList<Coordinate> getHitLocations() {
     return hitLocations;
@@ -25,5 +30,9 @@ public class HitAndMissBoard extends Board {
 
   public void addMissLocation(Coordinate c){
     missLocations.add(c);
+  }
+
+  public Space[][] getGrid(){
+    return super.getGrid();
   }
 }

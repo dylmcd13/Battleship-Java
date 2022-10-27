@@ -1,5 +1,5 @@
-import java.util.Observer;
-import java.util.Observable;
+package Model;
+
 
 public class GameData {
     Ship ships;

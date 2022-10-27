@@ -27,14 +27,5 @@ public class Coordinate {
     return y;
   }
 
-  /** Change X Coordinate */
-  public void setX(int x) {
-    this.x = x;
-  }
-
-  /** Change Y Coordinate */
-  public void setY(int y) {
-    this.y = y;
-  }
 
 }
