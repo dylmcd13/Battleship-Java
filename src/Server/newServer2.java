@@ -27,7 +27,9 @@ public class newServer2 {
         attack = keyboard.nextLine();
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         dos.writeUTF(attack);
-        
+        //would have an if statement here for hit/miss. H for hit, M for miss. 
+        //We simply have to pass strings through the network, and then use them to 
+        //manipulate the data model.
         ss.close();
         socket.close();
         }
