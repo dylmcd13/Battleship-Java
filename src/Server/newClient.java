@@ -48,7 +48,9 @@ public class newClient extends JFrame{
         DataInputStream dis = new DataInputStream(socket.getInputStream()); //for reading message from Server
         String message = dis.readUTF();
         System.out.println("Opponent 2 attacked:  " + message);
-
+         
+        //We would have a few if statements here for getting info about hit/mis. Simply return letter H for hit for M for miss
+       
 
         }
     }
