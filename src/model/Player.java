@@ -1,14 +1,14 @@
 package model;
-
+import java.util.Scanner;
 public class Player {
   
-  public static Carrier carrierShip = new Carrier();
+  Carrier carrierShip = new Carrier();
 
-  Battleship battleShip;
+  Battleship battleShip = new Battleship();
 
   Cruiser cruiserShip = new Cruiser();
 
-  Submarine submarineShip;
+  Submarine submarineShip = new Submarine();
 
   Destroyer destroyerShip;
 
@@ -69,28 +69,83 @@ public class Player {
    * Change to Space[] later on (maybe) and check if out of bounds or overlapping other ship
   */
   public void placeCarrier(int x, int y){
-    
-    Space[] placedOn = carrierShip.getPlacedOn();
-    System.out.println(placedOn.length);
-    placedOn[0] = shipBoard.getSpace(x, y);
-    placedOn[1] = shipBoard.getSpace(x, y+1);
-    placedOn[2] = shipBoard.getSpace(x, y+2);
-    placedOn[3] = shipBoard.getSpace(x, y+3);
-    placedOn[4] = shipBoard.getSpace(x, y+4);
-    placedOn[5] = shipBoard.getSpace(x, y+5);
-    carrierShip = new Carrier(placedOn);
+    Space[] placeAt = new Space[carrierShip.getLengthOfShip()];
+    placeAt[0] = shipBoard.getSpace(x, y);
+    placeAt[1] = shipBoard.getSpace(x, y+1);
+    placeAt[2] = shipBoard.getSpace(x, y+2);
+    placeAt[3] = shipBoard.getSpace(x, y+3);
+    placeAt[4] = shipBoard.getSpace(x, y+4);
+    carrierShip.setPlacedOn(placeAt);
   }
 
-  // public void placeBattleship(int x, int y){
+  public void placeBattleship(int x, int y){
+  	Space[] placeAt = new Space[battleShip.getLengthOfShip()];
+  	placeAt[0] = shipBoard.getSpace(x, y);
+  	placeAt[1] = shipBoard.getSpace(x, y+1);
+  	placeAt[2] = shipBoard.getSpace(x, y+2);
+  	placeAt[3] = shipBoard.getSpace(x, y+3);
+    battleShip.setPlacedOn(placeAt);
+  }
 
-  // }
+  public void placeCruiser(int x, int y){
+  	Space[] placeAt = new Space[cruiserShip.getLengthOfShip()];
+  	placeAt[0] = shipBoard.getSpace(x, y);
+  	placeAt[1] = shipBoard.getSpace(x, y+1);
+  	placeAt[2] = shipBoard.getSpace(x, y+2);
+  	placeAt[3] = shipBoard.getSpace(x, y+3);
+  	placeAt[4] = shipBoard.getSpace(x, y+4);
+    placeAt[5] = shipBoard.getSpace(x, y+5);
+    cruiserShip.setPlacedOn(placeAt);
+  }
 
-  // public void placeBattleship(int x, int y){
-
-  // }
-
-  // public void placeBattleship(int x, int y){
-
-  // }
+  public void placeSubmarine(int x, int y){
+  	Space[] placeAt = new Space[submarineShip.getLengthOfShip()];
+  	placeAt[0] = shipBoard.getSpace(x, y);
+  	placeAt[1] = shipBoard.getSpace(x, y+1);
+  	placeAt[2] = shipBoard.getSpace(x, y+2);
+    submarineShip.setPlacedOn(placeAt);
+  }
+  
+  public void placeDestroyer(int x, int y){
+  	Space[] placeAt = new Space[destroyerShip.getLengthOfShip()];
+    placeAt[0] = shipBoard.getSpace(x, y);
+    placeAt[1] = shipBoard.getSpace(x, y+1);
+    destroyerShip.setPlacedOn(placeAt);
+	}
+  
+  
+  public void placeShips() {
+  	Scanner sc = new Scanner(System.in);
+  	
+  	System.out.println("Where to place Carrier?");
+  	Coordinate carrierCoordinates = getCoordinates(sc);
+  	placeCarrier(carrierCoordinates.getX(),carrierCoordinates.getY());
+  	
+  	System.out.println("Where to place Battleship?");
+  	Coordinate battleshipCoordinates = getCoordinates(sc);
+  	placeCarrier(battleshipCoordinates.getX(),battleshipCoordinates.getY());
+  	
+  	System.out.println("Where to place Cruiser?");
+  	Coordinate cruiserCoordinates = getCoordinates(sc);
+  	placeCarrier(cruiserCoordinates.getX(),cruiserCoordinates.getY());
+  	
+  	System.out.println("Where to place Sub?");
+  	Coordinate submarineCoordinates = getCoordinates(sc);
+  	placeCarrier(submarineCoordinates.getX(),submarineCoordinates.getY());
+  	
+  	System.out.println("Where to place Destroyer?");
+  	Coordinate destroyerCoordinates = getCoordinates(sc);
+  	placeCarrier(destroyerCoordinates.getX(),destroyerCoordinates.getY());
+  	
+  	sc.close();
+  }
+  
+  public Coordinate getCoordinates(Scanner sc) {
+  	System.out.print("x-coordinate: ");
+  	int x = sc.nextInt();
+  	System.out.print("\ny-coordinate: ");
+  	int y = sc.nextInt();
+  	return new Coordinate(x,y);
+  }
 
 }

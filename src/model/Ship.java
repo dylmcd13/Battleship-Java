@@ -12,4 +12,8 @@ public interface Ship {
 
   /** Returns if ship is destroyed */ 
   public boolean getDestroyed();
+  
+  public void setPlacedOn(Space[] placedOn);
+  
+  public void shotTaken();
 }

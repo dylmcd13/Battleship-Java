@@ -19,4 +19,8 @@ public class Space {
   public boolean isShipHere(){
     return shipHere;
   }
+  
+  public void setShipHere() {
+  	shipHere = true;
+  }
 }
