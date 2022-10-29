@@ -18,34 +18,38 @@ public class Battleship {
   /** Health of Ship */
   private int hitPoints = lengthOfShip;
   
-  
+  /**
+   * Default constructor sets destroyed to false
+   */
   Battleship() {
   	destroyed = false;
   }
   
-  /** Must be length 4 */
+  /**
+   * Creates Battleship at specified Space
+   * @param space Array of Spaces where ship is placed (must be length 4)
+   */
   Battleship(Space[] space){
     placedOn = space;
   }
 
-  /** @return Spaces where ship is placed */
   public Space[] getPlacedOn(){ return placedOn; }
 
-  /** @return length of ship (4) */
+  
   public int getLengthOfShip(){ return lengthOfShip; }
 
-  /** @Returns ship name */
+ 
   public String getShipName(){ return shipName; }
 
-  /** Return if ship is destroyed */
+
   public boolean getDestroyed(){ return destroyed; }
   
-  /** For when a ship gets hit, it loses 1 hitPoint */
+
   public void shotTaken() { 
   	hitPoints--; 
   }
   
-  /** Sets where ship is placed */
+
   public void setPlacedOn(Space[] placedOn) {
   	this.placedOn = placedOn;
   }
