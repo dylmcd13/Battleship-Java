@@ -75,15 +75,24 @@ public class Player {
     placeAt[2] = shipBoard.getSpace(x, y+2);
     placeAt[3] = shipBoard.getSpace(x, y+3);
     placeAt[4] = shipBoard.getSpace(x, y+4);
+    placeAt[0].setShipHere();
+    placeAt[1].setShipHere();
+    placeAt[2].setShipHere();
+    placeAt[3].setShipHere();
+    placeAt[4].setShipHere();
     carrierShip.setPlacedOn(placeAt);
   }
 
   public void placeBattleship(int x, int y){
   	Space[] placeAt = new Space[battleShip.getLengthOfShip()];
   	placeAt[0] = shipBoard.getSpace(x, y);
+  	placeAt[0].setShipHere();
   	placeAt[1] = shipBoard.getSpace(x, y+1);
+  	placeAt[1].setShipHere();
   	placeAt[2] = shipBoard.getSpace(x, y+2);
+  	placeAt[2].setShipHere();
   	placeAt[3] = shipBoard.getSpace(x, y+3);
+  	placeAt[3].setShipHere();
     battleShip.setPlacedOn(placeAt);
   }
 
@@ -95,6 +104,12 @@ public class Player {
   	placeAt[3] = shipBoard.getSpace(x, y+3);
   	placeAt[4] = shipBoard.getSpace(x, y+4);
     placeAt[5] = shipBoard.getSpace(x, y+5);
+    placeAt[0].setShipHere();
+    placeAt[1].setShipHere();
+    placeAt[2].setShipHere();
+    placeAt[3].setShipHere();
+    placeAt[4].setShipHere();
+    placeAt[5].setShipHere();
     cruiserShip.setPlacedOn(placeAt);
   }
 
@@ -103,6 +118,9 @@ public class Player {
   	placeAt[0] = shipBoard.getSpace(x, y);
   	placeAt[1] = shipBoard.getSpace(x, y+1);
   	placeAt[2] = shipBoard.getSpace(x, y+2);
+  	placeAt[0].setShipHere();
+    placeAt[1].setShipHere();
+    placeAt[2].setShipHere();
     submarineShip.setPlacedOn(placeAt);
   }
   
@@ -110,6 +128,8 @@ public class Player {
   	Space[] placeAt = new Space[destroyerShip.getLengthOfShip()];
     placeAt[0] = shipBoard.getSpace(x, y);
     placeAt[1] = shipBoard.getSpace(x, y+1);
+    placeAt[0].setShipHere();
+    placeAt[1].setShipHere();
     destroyerShip.setPlacedOn(placeAt);
 	}
   

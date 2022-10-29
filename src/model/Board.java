@@ -4,6 +4,8 @@ public class Board{
   
   private Space[][] grid;
 
+  private Ship[] ships;
+  
   /** Default Constructor puts corresponding coordinate into grid */
   Board() {
     grid = new Space[10][10];
@@ -13,6 +15,8 @@ public class Board{
         grid[i][j] = new Space(c);
       }
     }
+    
+    ships = new Ship[5];
   }
 
   
@@ -24,12 +28,17 @@ public class Board{
 	  return grid;
   }
   
+  public Ship[] getShips() {
+  	return ships;
+  }
+  
   
   /**
    * Prolly make it so each Space has a square to display instead of doing this
    * 
    */
   public void displayBoard() {
+  	grid[0][0].isShipHere()
 	  System.out.println("IM DISPLAY BOARD &*$&#($&#($*&");
 	  StringBuilder sb = new StringBuilder();
 	  // sb.append("---------------------------------------------------\n");
