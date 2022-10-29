@@ -12,8 +12,11 @@ public class Submarine implements Ship{
   /** Name of Ship */
 	private final String shipName = "Submarine";
 
-
+	/** Spaces where ship is placed */
   private Space[] placedOn = new Space[lengthOfShip];
+  
+  /** Health of Ship */
+  private int hitPoints = lengthOfShip;
   
   /** Must be length 3 */
   Submarine(Space[] space){
@@ -29,4 +32,14 @@ public class Submarine implements Ship{
   public String getShipName(){ return shipName; }
 
   public boolean getDestroyed(){ return destroyed; }
+  
+  /** For when a ship gets hit, it loses 1 hitPoint */
+  public void shotTaken() { 
+  	hitPoints--; 
+  }
+  
+  /** Sets where ship is placed */
+  public void setPlacedOn(Space[] placedOn) {
+  	this.placedOn = placedOn;
+  }
 }

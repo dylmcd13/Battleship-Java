@@ -4,7 +4,7 @@ public class Carrier implements Ship{
   
   
   /** If ship is destroyed */
-	private boolean destroyed = false;
+	private boolean destroyed;
 
   /** length of ship */
 	private final int lengthOfShip = 5;
@@ -12,11 +12,14 @@ public class Carrier implements Ship{
   /** Name of Ship */
 	private final String shipName = "Carrier";
 
-
-  public Space[] placedOn = new Space[lengthOfShip];
-
+	/** Spaces where ship is placed */
+  private Space[] placedOn = new Space[lengthOfShip];
+  
+  /** Health of Ship */
+  private int hitPoints = lengthOfShip;
+  
   Carrier(){
-    
+    destroyed = false;
   }
 
   /** Must be length 5 */
@@ -33,4 +36,12 @@ public class Carrier implements Ship{
   public int getLengthOfShip(){ return lengthOfShip; }
 
   public boolean getDestroyed(){ return destroyed; }
+  
+  public void shotTaken() {
+  	hitPoints--;
+  }
+  
+  public void setPlacedOn(Space[] placedOn) {
+  	this.placedOn = placedOn;
+  }
 }

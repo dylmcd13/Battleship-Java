@@ -67,10 +67,15 @@ public class Board{
     }
   
   
-  
-  
-  
-  
   }	
+  
+  public boolean checkOverlap(Ship ship) {
+  	Space[] placedOn = ship.getPlacedOn();
+  	for(Space s : placedOn) {
+  		if(s.isShipHere() == true)
+  			return false;
+  	}
+  	return true;
+  }
 
 }

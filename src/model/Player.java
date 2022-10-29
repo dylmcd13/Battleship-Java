@@ -85,11 +85,15 @@ public class Player {
 
   // }
 
-  // public void placeBattleship(int x, int y){
+  // public void placeCruisership(int x, int y){
 
   // }
 
-  // public void placeBattleship(int x, int y){
+  // public void placeSubmarineship(int x, int y){
+
+  // }
+  
+  //public void placeDestroyership(int x, int y){
 
   // }
 
