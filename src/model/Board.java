@@ -17,6 +17,7 @@ public class Board{
     }
     
     ships = new Ship[5];
+    
   }
 
   
@@ -38,7 +39,7 @@ public class Board{
    * 
    */
   public void displayBoard() {
-  	grid[0][0].isShipHere()
+  	
 	  System.out.println("IM DISPLAY BOARD &*$&#($&#($*&");
 	  StringBuilder sb = new StringBuilder();
 	  // sb.append("---------------------------------------------------\n");

@@ -68,13 +68,18 @@ public class Player {
    * Places carrier horizontally for now
    * Change to Space[] later on (maybe) and check if out of bounds or overlapping other ship
   */
-  public void placeCarrier(int x, int y){
+  public void placeCarrier(int x1, int y1, int x2, int y2){
     Space[] placeAt = new Space[carrierShip.getLengthOfShip()];
-    placeAt[0] = shipBoard.getSpace(x, y);
-    placeAt[1] = shipBoard.getSpace(x, y+1);
-    placeAt[2] = shipBoard.getSpace(x, y+2);
-    placeAt[3] = shipBoard.getSpace(x, y+3);
-    placeAt[4] = shipBoard.getSpace(x, y+4);
+    placeAt[0] = shipBoard.getSpace(x1, y1);
+    placeAt[4] = shipBoard.getSpace(x2, y2);
+    while(x2 - x1 != carrierShip.getLengthOfShip() && y1 != y2) { //while ship is not on same horizontal line or wrong length???
+    	System.out.println("Needs to be "+carrierShip.getLengthOfShip()+" Spaces apart.");
+    	placeAt[0] = shipBoard.getSpace(x1, y1);
+      placeAt[4] = shipBoard.getSpace(x2, y2);
+    }
+    placeAt[1] = shipBoard.getSpace(x1+1, y1);
+    placeAt[2] = shipBoard.getSpace(x1+2, y1);
+    placeAt[3] = shipBoard.getSpace(x1+3, y1);
     placeAt[0].setShipHere();
     placeAt[1].setShipHere();
     placeAt[2].setShipHere();
@@ -138,9 +143,11 @@ public class Player {
   	Scanner sc = new Scanner(System.in);
   	
   	System.out.println("Where to place Carrier?");
-  	Coordinate carrierCoordinates = getCoordinates(sc);
-  	placeCarrier(carrierCoordinates.getX(),carrierCoordinates.getY());
+  	Coordinate carrierCoordinatesFront = getCoordinates(sc);
+  	Coordinate carrierCoordinatesBack = getCoordinates(sc);
+  	placeCarrier(carrierCoordinatesFront.getX(),carrierCoordinatesFront.getY(),carrierCoordinatesBack.getX(),carrierCoordinatesBack.getY());
   	
+  	/*
   	System.out.println("Where to place Battleship?");
   	Coordinate battleshipCoordinates = getCoordinates(sc);
   	placeCarrier(battleshipCoordinates.getX(),battleshipCoordinates.getY());
@@ -156,14 +163,14 @@ public class Player {
   	System.out.println("Where to place Destroyer?");
   	Coordinate destroyerCoordinates = getCoordinates(sc);
   	placeCarrier(destroyerCoordinates.getX(),destroyerCoordinates.getY());
-  	
+  	*/
   	sc.close();
   }
   
   public Coordinate getCoordinates(Scanner sc) {
-  	System.out.print("x-coordinate: ");
+  	System.out.print("x1-coordinate: ");
   	int x = sc.nextInt();
-  	System.out.print("\ny-coordinate: ");
+  	System.out.print("\ny1-coordinate: ");
   	int y = sc.nextInt();
   	return new Coordinate(x,y);
   }

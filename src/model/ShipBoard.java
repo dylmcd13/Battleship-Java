@@ -32,6 +32,10 @@ public class ShipBoard extends Board{
   public Space[][] getGrid(){
     return super.getGrid();
   }
+  
+  public void displayBoard() {
+  	super.displayBoard();
+  }
 
   
 }
