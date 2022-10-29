@@ -4,7 +4,7 @@ public class Cruiser {
   
   
   /** If ship is destroyed */
-	private boolean destroyed = false;
+	private boolean destroyed;
 
   /** length of ship */
 	private final int lengthOfShip = 3;
@@ -19,7 +19,7 @@ public class Cruiser {
   private int hitPoints = lengthOfShip;
   
   Cruiser(){
-    
+    destroyed = false;
   }
 
   /** Must be length 3 */
@@ -29,6 +29,7 @@ public class Cruiser {
 
   public Space[] getPlacedOn(){ return placedOn; }
 
+  /** @return length of ship (3) */
   public int getLengthOfShip(){ return lengthOfShip; }
 
   public String getShipName(){ return shipName; }

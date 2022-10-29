@@ -27,5 +27,9 @@ public class Coordinate {
     return y;
   }
 
+  
+  public void printCoordinate() {
+  	System.out.println("X-COORDINATE: "+x+"\nY-COORDINATE: "+y);
+  }
 
 }

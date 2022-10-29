@@ -33,6 +33,7 @@ public class Carrier implements Ship{
 
   public String getShipName(){ return shipName; }
 
+  /** @return length of ship (5) */
   public int getLengthOfShip(){ return lengthOfShip; }
 
   public boolean getDestroyed(){ return destroyed; }
@@ -43,5 +44,14 @@ public class Carrier implements Ship{
   
   public void setPlacedOn(Space[] placedOn) {
   	this.placedOn = placedOn;
+  }
+  
+  public void printPlacedAt() {
+  	System.out.println("Printing Where Carrier is PLaced At!");
+  	for(Space s: placedOn) {
+  		Coordinate c = s.getCoordinate();
+  		c.printCoordinate();
+  		System.out.println("");
+  	}
   }
 }

@@ -31,7 +31,7 @@ public class Battleship {
   /** @return Spaces where ship is placed */
   public Space[] getPlacedOn(){ return placedOn; }
 
-  /** @return length of ship */
+  /** @return length of ship (4) */
   public int getLengthOfShip(){ return lengthOfShip; }
 
   /** @Returns ship name */

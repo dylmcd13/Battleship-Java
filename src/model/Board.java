@@ -77,5 +77,9 @@ public class Board{
   	}
   	return true;
   }
+  
+  public boolean checkOutOfBounds(Ship ship) {
+  	return false;
+  }
 
 }

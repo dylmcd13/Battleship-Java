@@ -5,7 +5,8 @@ class Test {
 
 	  //System.out.println("TEST");
 	Player player1 = new Player();
-	player1.hitAndMissBoard.displayBoard();
+	player1.placeShips();
+	player1.carrierShip.printPlacedAt();
     /*
     Space[][] spaces = b.getGrid();
     Coordinate c = spaces[1][0].getCoordinate();

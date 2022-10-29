@@ -4,7 +4,7 @@ public class Destroyer {
   
   
   /** If ship is destroyed */
-	private boolean destroyed = false;
+	private boolean destroyed;
 
   /** length of ship */
 	private final int lengthOfShip = 2;
@@ -18,6 +18,10 @@ public class Destroyer {
   /** Health of Ship */
   private int hitPoints = lengthOfShip;
   
+  Destroyer(){
+  	destroyed = false;
+  }
+  
   /** Must be length 2 */
   Destroyer(Space[] space){
     placedOn = space;
@@ -25,6 +29,7 @@ public class Destroyer {
 
   public Space[] getPlacedOn(){ return placedOn; }
 
+  /** @return length of ship (2) */
   public int getLengthOfShip(){ return lengthOfShip; }
 
   public String getShipName(){ return shipName; }
