@@ -18,6 +18,10 @@ public class Submarine implements Ship{
   /** Health of Ship */
   private int hitPoints = lengthOfShip;
   
+  /**
+   * Default constructor.
+   * Sets destroyed to false
+   */
   Submarine(){
   	destroyed = false;
   }
@@ -27,23 +31,30 @@ public class Submarine implements Ship{
     placedOn = space;
   }
 
+  
   public Space[] getPlacedOn(){
     return placedOn;
   }
 
-  /** @return length of ship (3) */
+ 
   public int getLengthOfShip(){ return lengthOfShip; }
 
   public String getShipName(){ return shipName; }
 
   public boolean getDestroyed(){ return destroyed; }
   
-  /** For when a ship gets hit, it loses 1 hitPoint */
+  public int getHitPoints() { return hitPoints; }
+  
+  /** 
+   * For when a ship gets hit, it loses 1 hitPoint
+   */
   public void shotTaken() { 
   	hitPoints--; 
   }
   
-  /** Sets where ship is placed */
+  /** 
+   * Sets where ship is placed 
+   */
   public void setPlacedOn(Space[] placedOn) {
   	this.placedOn = placedOn;
   }

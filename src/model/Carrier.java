@@ -18,25 +18,31 @@ public class Carrier implements Ship{
   /** Health of Ship */
   private int hitPoints = lengthOfShip;
   
+  /**
+   * Default constructor sets destroyed to false
+   */
   Carrier(){
     destroyed = false;
   }
 
-  /** Must be length 5 */
+  /**
+   * Creates Destroyer at specified Space
+   * @param space Array of Spaces where ship is placed (must be length 5)
+   */
   Carrier(Space[] space){
     placedOn = space;
   }
 
-  public Space[] getPlacedOn(){
-    return placedOn;
-  }
+  
+  public Space[] getPlacedOn(){ return placedOn; }
 
   public String getShipName(){ return shipName; }
 
-  /** @return length of ship (5) */
   public int getLengthOfShip(){ return lengthOfShip; }
 
   public boolean getDestroyed(){ return destroyed; }
+  
+  public int getHitPoints() { return hitPoints; }
   
   public void shotTaken() {
   	hitPoints--;
