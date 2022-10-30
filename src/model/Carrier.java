@@ -1,4 +1,4 @@
-package model;
+
 
 public class Carrier implements Ship{
   
@@ -53,7 +53,7 @@ public class Carrier implements Ship{
   }
   
   public void printPlacedAt() {
-  	System.out.println("Printing Where Carrier is PLaced At!");
+  	System.out.println("Printing Where Carrier is Placed At!");
   	for(Space s: placedOn) {
   		Coordinate c = s.getCoordinate();
   		c.printCoordinate();

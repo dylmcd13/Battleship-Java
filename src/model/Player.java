@@ -1,4 +1,4 @@
-package model;
+
 import java.util.Scanner;
 public class Player {
   
@@ -394,9 +394,7 @@ public class Player {
   	Coordinate destroyerCoordinatesFront = getCoordinates("1",sc);
   	Coordinate destroyerCoordinatesBack = getCoordinates("2",sc);
   	placeDestroyer(destroyerCoordinatesFront.getX(),destroyerCoordinatesFront.getY(),destroyerCoordinatesBack.getX(),destroyerCoordinatesBack.getY(),horizontal);
-  	
-  	
-  	sc.close();
+
   }
   
   public Coordinate getCoordinates(String s,Scanner sc) {

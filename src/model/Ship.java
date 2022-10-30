@@ -1,4 +1,4 @@
-package model;
+
 
 public interface Ship {
 	/** Returns name of ship */

@@ -1,4 +1,4 @@
-package model;
+
 import java.util.ArrayList;
 public class ShipBoard extends Board{
   private ArrayList<Coordinate> hitLocations;
@@ -30,10 +30,6 @@ public class ShipBoard extends Board{
 
   public Space[][] getGrid(){
     return super.getGrid();
-  }
-  
-  public void displayBoard() {
-  	super.displayBoard();
   }
   
   public boolean checkOverlap( Space[] placedOn) {

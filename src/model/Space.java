@@ -1,4 +1,3 @@
-package model;
 
 @SuppressWarnings("unused")
 public class Space {

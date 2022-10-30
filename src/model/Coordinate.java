@@ -1,4 +1,3 @@
-package model;
 
 /** Coordinate class */
 public class Coordinate {
