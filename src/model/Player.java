@@ -10,7 +10,7 @@ public class Player {
 
   Submarine submarineShip = new Submarine();
 
-  Destroyer destroyerShip;
+  Destroyer destroyerShip = new Destroyer();
 
   Board hitAndMissBoard = new HitAndMissBoard();
   Board shipBoard = new ShipBoard();
@@ -69,50 +69,59 @@ public class Player {
    * Change to Space[] later on (maybe) and check if out of bounds or overlapping other ship
   */
   public void placeCarrier(int x1, int y1, int x2, int y2, boolean horizontal){
-    Space[] placeAt = new Space[carrierShip.getLengthOfShip()];
-    Scanner sc = new Scanner(System.in);
+  	Space[] placeAt = new Space[carrierShip.getLengthOfShip()];
+  	Scanner sc = new Scanner(System.in);
     
     if(horizontal == true) {
 	    placeAt[0] = shipBoard.getSpace(x1, y1);
-	    placeAt[4] = shipBoard.getSpace(x2, y2);
-	    
-	    int lengthMinusOne = carrierShip.getLengthOfShip()-1;
-
-	    while(x2 - x1 != lengthMinusOne || y1 != y2) { //while ship is not on same horizontal line or wrong length???
-	    	System.out.println("Needs to be "+carrierShip.getLengthOfShip()+" Spaces apart.");
-	    	Coordinate carrierCoordinatesFront = getCoordinates("1",sc);
-	    	Coordinate carrierCoordinatesBack = getCoordinates("2",sc);
-	    	
-	    	
-	    	x1 = carrierCoordinatesFront.getX();
-	    	y1 = carrierCoordinatesFront.getY();
-	    	
-	    	x2 = carrierCoordinatesBack.getX();
-	    	y2 = carrierCoordinatesBack.getY();
-	    	placeAt[0] = shipBoard.getSpace(carrierCoordinatesFront.getX(), carrierCoordinatesFront.getY());
-	      placeAt[4] = shipBoard.getSpace(carrierCoordinatesBack.getX(), carrierCoordinatesBack.getY());
-	    }
 	    placeAt[1] = shipBoard.getSpace(x1+1, y1);
 	    placeAt[2] = shipBoard.getSpace(x1+2, y1);
 	    placeAt[3] = shipBoard.getSpace(x1+3, y1);
+	    placeAt[4] = shipBoard.getSpace(x2, y2);
+	    
+	    int lengthMinusOne = carrierShip.getLengthOfShip()-1;
+	    
+	    while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true) { //while ship is not on same horizontal line or wrong length???
+	    	System.out.println("Error: Ship overlap or out of bounds. Enter coordinates again.");
+	    	Coordinate carrierShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate battleshipCoordinatesBack = getCoordinates("2",sc);
+	    	
+	    	
+	    	x1 = carrierShipCoordinatesFront.getX();
+	    	y1 = carrierShipCoordinatesFront.getY();
+	    	
+	    	x2 = battleshipCoordinatesBack.getX();
+	    	y2 = battleshipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(carrierShipCoordinatesFront.getX(), carrierShipCoordinatesFront.getY());
+	    	placeAt[1] = shipBoard.getSpace(x1+1, y1);
+		    placeAt[2] = shipBoard.getSpace(x1+2, y1);
+		    placeAt[3] = shipBoard.getSpace(x1+3, y1);
+	      placeAt[4] = shipBoard.getSpace(battleshipCoordinatesBack.getX(), battleshipCoordinatesBack.getY());
+	    }
+	    placeAt[1] = shipBoard.getSpace(x1+1, y1);
+	    placeAt[2] = shipBoard.getSpace(x1+2, y1);
     }else {
     	placeAt[0] = shipBoard.getSpace(x1, y1);
-	    placeAt[4] = shipBoard.getSpace(x2, y2);
-	    while(y2 - y1 != carrierShip.getLengthOfShip()-1 || x1 != x2) { //while ship is not on same horizontal line or wrong length???
+    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+	    placeAt[2] = shipBoard.getSpace(x1, y1+2);
+	    placeAt[3] = shipBoard.getSpace(x2, y2);
+	    //while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true)
+	    while(y2 - y1 != carrierShip.getLengthOfShip()-1 || x1 != x2 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || shipBoard.checkOverlap(placeAt)) { //while ship is not on same horizontal line or wrong length???
 	    	System.out.println("Needs to be "+carrierShip.getLengthOfShip()+" Spaces apart.");
-	    	Coordinate carrierCoordinatesFront = getCoordinates("1",sc);
-	    	Coordinate carrierCoordinatesBack = getCoordinates("2",sc);
-	    	x1 = carrierCoordinatesFront.getX();
-	    	y1 = carrierCoordinatesFront.getY();
+	    	Coordinate carrierShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate battleshipCoordinatesBack = getCoordinates("2",sc);
+	    	x1 = carrierShipCoordinatesFront.getX();
+	    	y1 = carrierShipCoordinatesFront.getY();
 	    	
-	    	x2 = carrierCoordinatesBack.getX();
-	    	y2 = carrierCoordinatesBack.getY();
-	    	placeAt[0] = shipBoard.getSpace(carrierCoordinatesFront.getX(), carrierCoordinatesFront.getY());
-	      placeAt[4] = shipBoard.getSpace(carrierCoordinatesBack.getX(), carrierCoordinatesBack.getY());
+	    	x2 = battleshipCoordinatesBack.getX();
+	    	y2 = battleshipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(carrierShipCoordinatesFront.getX(), carrierShipCoordinatesFront.getY());
+	    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+		    placeAt[2] = shipBoard.getSpace(x1, y1+2);
+	      placeAt[3] = shipBoard.getSpace(battleshipCoordinatesBack.getX(), battleshipCoordinatesBack.getY());
 	    }
 	    placeAt[1] = shipBoard.getSpace(x1, y1+1);
 	    placeAt[2] = shipBoard.getSpace(x1, y1+2);
-	    placeAt[3] = shipBoard.getSpace(x1, y1+3);
     }
     placeAt[0].setShipHere();
     placeAt[1].setShipHere();
@@ -141,39 +150,44 @@ public class Player {
 	    placeAt[3] = shipBoard.getSpace(x2, y2);
 	    
 	    int lengthMinusOne = battleShip.getLengthOfShip()-1;
-
+	    
 	    while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true) { //while ship is not on same horizontal line or wrong length???
 	    	System.out.println("Error: Ship overlap or out of bounds. Enter coordinates again.");
 	    	Coordinate battleshipCoordinatesFront = getCoordinates("1",sc);
-	    	Coordinate battleshipCoordinatesBack = getCoordinates("2",sc);
+	    	Coordinate carrierShipCoordinatesBack = getCoordinates("2",sc);
 	    	
 	    	
 	    	x1 = battleshipCoordinatesFront.getX();
 	    	y1 = battleshipCoordinatesFront.getY();
 	    	
-	    	x2 = battleshipCoordinatesBack.getX();
-	    	y2 = battleshipCoordinatesBack.getY();
+	    	x2 = carrierShipCoordinatesBack.getX();
+	    	y2 = carrierShipCoordinatesBack.getY();
 	    	placeAt[0] = shipBoard.getSpace(battleshipCoordinatesFront.getX(), battleshipCoordinatesFront.getY());
 	    	placeAt[1] = shipBoard.getSpace(x1+1, y1);
 		    placeAt[2] = shipBoard.getSpace(x1+2, y1);
-	      placeAt[3] = shipBoard.getSpace(battleshipCoordinatesBack.getX(), battleshipCoordinatesBack.getY());
+	      placeAt[3] = shipBoard.getSpace(carrierShipCoordinatesBack.getX(), carrierShipCoordinatesBack.getY());
 	    }
 	    placeAt[1] = shipBoard.getSpace(x1+1, y1);
 	    placeAt[2] = shipBoard.getSpace(x1+2, y1);
     }else {
     	placeAt[0] = shipBoard.getSpace(x1, y1);
+    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+	    placeAt[2] = shipBoard.getSpace(x1, y1+2);
 	    placeAt[3] = shipBoard.getSpace(x2, y2);
-	    while(y2 - y1 != battleShip.getLengthOfShip()-1 || x1 != x2) { //while ship is not on same horizontal line or wrong length???
+	    //while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true)
+	    while(y2 - y1 != battleShip.getLengthOfShip()-1 || x1 != x2 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || shipBoard.checkOverlap(placeAt)) { //while ship is not on same horizontal line or wrong length???
 	    	System.out.println("Needs to be "+battleShip.getLengthOfShip()+" Spaces apart.");
 	    	Coordinate battleshipCoordinatesFront = getCoordinates("1",sc);
-	    	Coordinate battleshipCoordinatesBack = getCoordinates("2",sc);
+	    	Coordinate carrierShipCoordinatesBack = getCoordinates("2",sc);
 	    	x1 = battleshipCoordinatesFront.getX();
 	    	y1 = battleshipCoordinatesFront.getY();
 	    	
-	    	x2 = battleshipCoordinatesBack.getX();
-	    	y2 = battleshipCoordinatesBack.getY();
+	    	x2 = carrierShipCoordinatesBack.getX();
+	    	y2 = carrierShipCoordinatesBack.getY();
 	    	placeAt[0] = shipBoard.getSpace(battleshipCoordinatesFront.getX(), battleshipCoordinatesFront.getY());
-	      placeAt[3] = shipBoard.getSpace(battleshipCoordinatesBack.getX(), battleshipCoordinatesBack.getY());
+	    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+		    placeAt[2] = shipBoard.getSpace(x1, y1+2);
+	      placeAt[3] = shipBoard.getSpace(carrierShipCoordinatesBack.getX(), carrierShipCoordinatesBack.getY());
 	    }
 	    placeAt[1] = shipBoard.getSpace(x1, y1+1);
 	    placeAt[2] = shipBoard.getSpace(x1, y1+2);
@@ -184,52 +198,162 @@ public class Player {
     placeAt[3].setShipHere();
     battleShip.setPlacedOn(placeAt);
   	
-  	
-  	/*
-  	placeAt[0] = shipBoard.getSpace(x, y);
-  	placeAt[0].setShipHere();
-  	placeAt[1] = shipBoard.getSpace(x, y+1);
-  	placeAt[1].setShipHere();
-  	placeAt[2] = shipBoard.getSpace(x, y+2);
-  	placeAt[2].setShipHere();
-  	placeAt[3] = shipBoard.getSpace(x, y+3);
-  	placeAt[3].setShipHere();
-    battleShip.setPlacedOn(placeAt);
-    */
   }
 
-  public void placeCruiser(int x, int y){
+  public void placeCruiser(int x1, int y1, int x2, int y2, boolean horizontal){
   	Space[] placeAt = new Space[cruiserShip.getLengthOfShip()];
-  	placeAt[0] = shipBoard.getSpace(x, y);
-  	placeAt[1] = shipBoard.getSpace(x, y+1);
-  	placeAt[2] = shipBoard.getSpace(x, y+2);
-  	placeAt[3] = shipBoard.getSpace(x, y+3);
-  	placeAt[4] = shipBoard.getSpace(x, y+4);
-    placeAt[5] = shipBoard.getSpace(x, y+5);
+  	Scanner sc = new Scanner(System.in);
+    
+    if(horizontal == true) {
+	    placeAt[0] = shipBoard.getSpace(x1, y1);
+	    placeAt[1] = shipBoard.getSpace(x1+1, y1);
+	    placeAt[2] = shipBoard.getSpace(x2, y2);
+	    
+	    int lengthMinusOne = cruiserShip.getLengthOfShip()-1;
+	    
+	    while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true) { //while ship is not on same horizontal line or wrong length???
+	    	System.out.println("EError: Ship overlap or out of bounds. Enter coordinates again.");
+	    	Coordinate cruiserShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate cruiserShipCoordinatesBack = getCoordinates("2",sc);
+	    	
+	    	
+	    	x1 = cruiserShipCoordinatesFront.getX();
+	    	y1 = cruiserShipCoordinatesFront.getY();
+	    	
+	    	x2 = cruiserShipCoordinatesBack.getX();
+	    	y2 = cruiserShipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(cruiserShipCoordinatesFront.getX(), cruiserShipCoordinatesFront.getY());
+	    	placeAt[1] = shipBoard.getSpace(x1+1, y1);
+	      placeAt[2] = shipBoard.getSpace(cruiserShipCoordinatesBack.getX(), cruiserShipCoordinatesBack.getY());
+	    }
+	    placeAt[1] = shipBoard.getSpace(x1+1, y1);
+	    
+    }else {
+    	placeAt[0] = shipBoard.getSpace(x1, y1);
+    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+    	placeAt[2] = shipBoard.getSpace(x2, y2);
+	    //while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true)
+	    while(y2 - y1 != cruiserShip.getLengthOfShip()-1 || x1 != x2 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || shipBoard.checkOverlap(placeAt)) { //while ship is not on same horizontal line or wrong length???
+	    	System.out.println("Needs to be "+cruiserShip.getLengthOfShip()+" Spaces apart.");
+	    	Coordinate cruiserShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate cruiserShipCoordinatesBack = getCoordinates("2",sc);
+	    	x1 = cruiserShipCoordinatesFront.getX();
+	    	y1 = cruiserShipCoordinatesFront.getY();
+	    	
+	    	x2 = cruiserShipCoordinatesBack.getX();
+	    	y2 = cruiserShipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(cruiserShipCoordinatesFront.getX(), cruiserShipCoordinatesFront.getY());
+	    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+	    	placeAt[2] = shipBoard.getSpace(cruiserShipCoordinatesBack.getX(), cruiserShipCoordinatesBack.getY());
+	      
+	    }
+	    placeAt[1] = shipBoard.getSpace(x1, y1+1);
+    }
     placeAt[0].setShipHere();
     placeAt[1].setShipHere();
     placeAt[2].setShipHere();
-    placeAt[3].setShipHere();
-    placeAt[4].setShipHere();
-    placeAt[5].setShipHere();
     cruiserShip.setPlacedOn(placeAt);
   }
 
-  public void placeSubmarine(int x, int y){
+  public void placeSubmarine(int x1, int y1, int x2, int y2, boolean horizontal){
   	Space[] placeAt = new Space[submarineShip.getLengthOfShip()];
-  	placeAt[0] = shipBoard.getSpace(x, y);
-  	placeAt[1] = shipBoard.getSpace(x, y+1);
-  	placeAt[2] = shipBoard.getSpace(x, y+2);
-  	placeAt[0].setShipHere();
+  	Scanner sc = new Scanner(System.in);
+    
+    if(horizontal == true) {
+	    placeAt[0] = shipBoard.getSpace(x1, y1);
+	    placeAt[1] = shipBoard.getSpace(x1+1, y1);
+	    placeAt[2] = shipBoard.getSpace(x2, y2);
+	    
+	    int lengthMinusOne = submarineShip.getLengthOfShip()-1;
+	    
+	    while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true) { //while ship is not on same horizontal line or wrong length???
+	    	System.out.println("Error: Ship overlap or out of bounds. Enter coordinates again.");
+	    	Coordinate submarineShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate submarineShipCoordinatesBack = getCoordinates("2",sc);
+	    	
+	    	
+	    	x1 = submarineShipCoordinatesFront.getX();
+	    	y1 = submarineShipCoordinatesFront.getY();
+	    	
+	    	x2 = submarineShipCoordinatesBack.getX();
+	    	y2 = submarineShipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(submarineShipCoordinatesFront.getX(), submarineShipCoordinatesFront.getY());
+	    	placeAt[1] = shipBoard.getSpace(x1+1, y1);
+	      placeAt[2] = shipBoard.getSpace(submarineShipCoordinatesBack.getX(), submarineShipCoordinatesBack.getY());
+	    }
+	    placeAt[1] = shipBoard.getSpace(x1+1, y1);
+    }else {
+    	placeAt[0] = shipBoard.getSpace(x1, y1);
+    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+	    placeAt[2] = shipBoard.getSpace(x2, y2);
+	    //while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true)
+	    while(y2 - y1 != submarineShip.getLengthOfShip()-1 || x1 != x2 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || shipBoard.checkOverlap(placeAt)) { //while ship is not on same horizontal line or wrong length???
+	    	System.out.println("EError: Ship overlap or out of bounds. Enter coordinates again.");
+	    	Coordinate submarineShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate submarineShipCoordinatesBack = getCoordinates("2",sc);
+	    	x1 = submarineShipCoordinatesFront.getX();
+	    	y1 = submarineShipCoordinatesFront.getY();
+	    	
+	    	x2 = submarineShipCoordinatesBack.getX();
+	    	y2 = submarineShipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(submarineShipCoordinatesFront.getX(), submarineShipCoordinatesFront.getY());
+	    	placeAt[1] = shipBoard.getSpace(x1, y1+1);
+	      placeAt[2] = shipBoard.getSpace(submarineShipCoordinatesBack.getX(), submarineShipCoordinatesBack.getY());
+	    }
+	    placeAt[1] = shipBoard.getSpace(x1, y1+1);
+	    
+    }
+    placeAt[0].setShipHere();
     placeAt[1].setShipHere();
     placeAt[2].setShipHere();
     submarineShip.setPlacedOn(placeAt);
   }
   
-  public void placeDestroyer(int x, int y){
+  public void placeDestroyer(int x1, int y1, int x2, int y2, boolean horizontal){
   	Space[] placeAt = new Space[destroyerShip.getLengthOfShip()];
-    placeAt[0] = shipBoard.getSpace(x, y);
-    placeAt[1] = shipBoard.getSpace(x, y+1);
+  	Scanner sc = new Scanner(System.in);
+    
+    if(horizontal == true) {
+	    placeAt[0] = shipBoard.getSpace(x1, y1);
+	    placeAt[1] = shipBoard.getSpace(x2, y2);
+	    
+	    
+	    int lengthMinusOne = destroyerShip.getLengthOfShip()-1;
+	    
+	    while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true) { //while ship is not on same horizontal line or wrong length???
+	    	System.out.println("Error: Ship overlap or out of bounds. Enter coordinates again.");
+	    	Coordinate destroyerShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate destroyerShipCoordinatesBack = getCoordinates("2",sc);
+	    	
+	    	
+	    	x1 = destroyerShipCoordinatesFront.getX();
+	    	y1 = destroyerShipCoordinatesFront.getY();
+	    	
+	    	x2 = destroyerShipCoordinatesBack.getX();
+	    	y2 = destroyerShipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(destroyerShipCoordinatesFront.getX(), destroyerShipCoordinatesFront.getY());
+	    	placeAt[1] = shipBoard.getSpace(destroyerShipCoordinatesBack.getX(), destroyerShipCoordinatesBack.getY());
+	      
+	    }
+    }else {
+    	placeAt[0] = shipBoard.getSpace(x1, y1);
+	    placeAt[1] = shipBoard.getSpace(x2, y2);
+	    //while(x2 - x1 != lengthMinusOne || y1 != y2 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || shipBoard.checkOverlap(placeAt) == true)
+	    while(y2 - y1 != destroyerShip.getLengthOfShip()-1 || x1 != x2 || y1 < 0 || y1 > 9 || y2 < 0 || y2 > 9 || x1 < 0 || x1 > 9 || x2 < 0 || x2 > 9 || shipBoard.checkOverlap(placeAt)) { //while ship is not on same horizontal line or wrong length???
+	    	System.out.println("Error: Ship overlap or out of bounds. Enter coordinates again.");
+	    	Coordinate destroyerShipCoordinatesFront = getCoordinates("1",sc);
+	    	Coordinate destroyerShipCoordinatesBack = getCoordinates("2",sc);
+	    	x1 = destroyerShipCoordinatesFront.getX();
+	    	y1 = destroyerShipCoordinatesFront.getY();
+	    	
+	    	x2 = destroyerShipCoordinatesBack.getX();
+	    	y2 = destroyerShipCoordinatesBack.getY();
+	    	placeAt[0] = shipBoard.getSpace(destroyerShipCoordinatesFront.getX(), destroyerShipCoordinatesFront.getY());
+	      placeAt[1] = shipBoard.getSpace(destroyerShipCoordinatesBack.getX(), destroyerShipCoordinatesBack.getY());
+	    }
+	    
+	    
+    }
     placeAt[0].setShipHere();
     placeAt[1].setShipHere();
     destroyerShip.setPlacedOn(placeAt);
@@ -250,19 +374,27 @@ public class Player {
   	Coordinate battleshipCoordinatesFront = getCoordinates("1",sc);
   	Coordinate battleshipCoordinatesBack = getCoordinates("2",sc);
   	placeBattleship(battleshipCoordinatesFront.getX(),battleshipCoordinatesFront.getY(),battleshipCoordinatesBack.getX(),battleshipCoordinatesBack.getY(),horizontal);
-  	/*
+  	
+  	horizontal = checkHorizontal();
   	System.out.println("Where to place Cruiser?");
-  	Coordinate cruiserCoordinates = getCoordinates(sc);
-  	placeCarrier(cruiserCoordinates.getX(),cruiserCoordinates.getY());
+  	Coordinate cruiserCoordinatesFront = getCoordinates("1",sc);
+  	Coordinate cruiserCoordinatesBack = getCoordinates("2",sc);
+  	placeCruiser(cruiserCoordinatesFront.getX(),cruiserCoordinatesFront.getY(),cruiserCoordinatesBack.getX(),cruiserCoordinatesBack.getY(),horizontal);
   	
-  	System.out.println("Where to place Sub?");
-  	Coordinate submarineCoordinates = getCoordinates(sc);
-  	placeCarrier(submarineCoordinates.getX(),submarineCoordinates.getY());
   	
+  	horizontal = checkHorizontal();
+  	System.out.println("Where to place Submarine?");
+  	Coordinate submarineCoordinatesFront = getCoordinates("1",sc);
+  	Coordinate submarineCoordinatesBack = getCoordinates("2",sc);
+  	placeSubmarine(submarineCoordinatesFront.getX(),submarineCoordinatesFront.getY(),submarineCoordinatesBack.getX(),submarineCoordinatesBack.getY(),horizontal);
+  	
+  	
+  	horizontal = checkHorizontal();
   	System.out.println("Where to place Destroyer?");
-  	Coordinate destroyerCoordinates = getCoordinates(sc);
-  	placeCarrier(destroyerCoordinates.getX(),destroyerCoordinates.getY());
-  	*/
+  	Coordinate destroyerCoordinatesFront = getCoordinates("1",sc);
+  	Coordinate destroyerCoordinatesBack = getCoordinates("2",sc);
+  	placeDestroyer(destroyerCoordinatesFront.getX(),destroyerCoordinatesFront.getY(),destroyerCoordinatesBack.getX(),destroyerCoordinatesBack.getY(),horizontal);
+  	
   	
   	sc.close();
   }

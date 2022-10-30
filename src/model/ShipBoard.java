@@ -24,7 +24,6 @@ public class ShipBoard extends Board{
     hitLocations.add(c);
   }
 
-
   public void addMissLocation(Coordinate c){
     missLocations.add(c);
   }

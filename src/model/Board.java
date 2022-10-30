@@ -81,7 +81,6 @@ public class Board{
   
   public boolean checkOverlap(Space[] placedOn) {
   	for(Space s : placedOn) {
-  		System.out.println("Checking overlap...");
   		if(s.isShipHere() == true)
   			return true;
   	}
