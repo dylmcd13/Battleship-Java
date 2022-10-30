@@ -1,11 +1,7 @@
-package model;
 
 public class Board{
-  
+  private String[][] HitOrmiss;
   private Space[][] grid;
-
-  private Ship[] ships;
-  
   /** Default Constructor puts corresponding coordinate into grid */
   Board() {
     grid = new Space[10][10];
@@ -15,9 +11,6 @@ public class Board{
         grid[i][j] = new Space(c);
       }
     }
-    
-    ships = new Ship[5];
-    
   }
 
   
@@ -29,19 +22,245 @@ public class Board{
 	  return grid;
   }
   
-  public Ship[] getShips() {
-  	return ships;
-  }
-  
   
   /**
    * Prolly make it so each Space has a square to display instead of doing this
    * 
    */
-  public void displayBoard() {
-  	
-	  System.out.println("IM DISPLAY BOARD &*$&#($&#($*&");
+  public String[][] displayBoard() {
+	  String [][] updateBoard = new String[10][10];
+	  System.out.println("BOARD:");
 	  StringBuilder sb = new StringBuilder();
+	  char c = 'A';
+
+	  System.out.print(" ");
+	  for (int i = 0 ; i < 10; i++)
+	  {
+			System.out.print(" " + i );
+	  }
+	  System.out.println("");
+	  for (int i = 0; i < 10; i++)
+	  {
+		System.out.print(c++);
+		  for (int j = 0; j < 10; j++)
+	      {
+			if (grid[i][j].isShipHere() == true) {
+			System.out.print(" $");
+			updateBoard[i][j]= " $";
+			} else {
+			System.out.print(" *");
+			updateBoard[i][j]= " *";
+			}
+	      }
+		  System.out.println("");
+	  }
+	  return updateBoard;
+  }	
+
+  public String[][] displayBoard(String board[][], String x, String y) {
+	System.out.println("BOARD:");
+	StringBuilder sb = new StringBuilder();
+	char c = 'A';
+	char conversion = x.charAt(0);
+	int count = 1;
+	int rowIndex = 0;
+	if ((conversion == 'A') || (conversion == 'A'))
+		{
+			rowIndex = 0;
+		} else if ((conversion == 'b') || (conversion == 'B'))
+		{
+			rowIndex = 1;
+		} else if ((conversion == 'C') || (conversion == 'c'))
+		{
+			rowIndex = 2;
+		} else if ((conversion == 'D') || (conversion == 'd') )
+		{
+			rowIndex = 3;
+		} else if ((conversion == 'E') || (conversion == 'e'))
+		{
+			rowIndex = 4;
+		} else if ((conversion == 'F') || (conversion == 'f'))
+		{
+			rowIndex = 5;
+		} else if ((conversion == 'G') || (conversion == 'g'))
+		{
+			rowIndex = 6;
+		} else if ((conversion == 'H') || (conversion == 'h'))
+		{
+			rowIndex = 7;
+		} else if ((conversion == 'I') || (conversion == 'i'))
+		{
+			rowIndex = 8;
+		} else
+		{
+			rowIndex = 9;
+		}
+	int columnIndex = Integer.parseInt(y);
+	System.out.print(" ");
+	for (int i = 0 ; i < 10; i++)
+	{
+		  System.out.print(" " + i );
+	}
+	System.out.println("");
+	for (int i = 0; i < 10; i++)
+	{
+	  System.out.print(c++);
+		for (int j = 0; j < 10; j++)
+		{
+		  if (board[rowIndex][columnIndex] == " $") {
+		  board[rowIndex][columnIndex] = " X";
+		  count--;
+		  System.out.print(board[i][j]);
+		  } else {
+		  System.out.print(board[i][j]);
+		  }
+		}
+		System.out.println("");
+	}
+	return board;
+}
+
+public String[][] HitOrMissBoard()
+{
+	String [][] updateBoard = new String[10][10];
+	  System.out.println("HIT AND MISS BOARD:");
+	  StringBuilder sb = new StringBuilder();
+	  char c = 'A';
+
+	  System.out.print(" ");
+	  for (int i = 0 ; i < 10; i++)
+	  {
+			System.out.print(" " + i );
+	  }
+	  System.out.println("");
+	  for (int i = 0; i < 10; i++)
+	  {
+		System.out.print(c++);
+		  for (int j = 0; j < 10; j++)
+	      {
+     		System.out.print(" *");
+			  updateBoard[i][j]= " *";
+			
+	      }
+		  System.out.println("");
+	  }
+	  HitOrmiss = updateBoard;
+	  return HitOrmiss;
+  }
+
+public String [][] HitOrMissBoard(String [][] HitOrMiss, String x, String y, String HorM)
+{
+	  System.out.println("HIT AND MISS BOARD:");
+	  StringBuilder sb = new StringBuilder();
+	  char c = 'A';
+	  char convertHitOrMiss = HorM.charAt(0);
+	  char conversion = x.charAt(0);
+		int rowIndex = 0;
+	if ((conversion == 'A') || (conversion == 'A'))
+		{
+			rowIndex = 0;
+		} else if ((conversion == 'b') || (conversion == 'B'))
+		{
+			rowIndex = 1;
+		} else if ((conversion == 'C') || (conversion == 'c'))
+		{
+			rowIndex = 2;
+		} else if ((conversion == 'D') || (conversion == 'd') )
+		{
+			rowIndex = 3;
+		} else if ((conversion == 'E') || (conversion == 'e'))
+		{
+			rowIndex = 4;
+		} else if ((conversion == 'F') || (conversion == 'f'))
+		{
+			rowIndex = 5;
+		} else if ((conversion == 'G') || (conversion == 'g'))
+		{
+			rowIndex = 6;
+		} else if ((conversion == 'H') || (conversion == 'h'))
+		{
+			rowIndex = 7;
+		} else if ((conversion == 'I') || (conversion == 'i'))
+		{
+			rowIndex = 8;
+		} else
+		{
+			rowIndex = 9;
+		}
+	   int columnIndex = Integer.parseInt(y);
+
+
+	  System.out.print(" ");
+	  for (int i = 0 ; i < 10; i++)
+	  {
+			System.out.print(" " + i );
+	  }
+	  System.out.println("");
+	  for (int i = 0; i < 10; i++)
+	  {
+		System.out.print(c++);
+		  for (int j = 0; j < 10; j++)
+	      {
+			if (convertHitOrMiss == 'H') {
+			HitOrMiss[rowIndex][columnIndex] = " H";
+			System.out.print(HitOrMiss[i][j]);
+			} else {
+     		System.out.print(HitOrMiss[i][j]);
+			}
+	      }
+		  System.out.println("");
+	  }
+	  return HitOrMiss;
+  }
+
+	public String checkHitMiss(String[][] board, String x, String y)
+{
+	int rowIndex = 0;
+	char conversion = x.charAt(0);
+	int columnindex = Integer.parseInt(y);
+	if ((conversion == 'A') || (conversion == 'A'))
+		{
+			rowIndex = 0;
+		} else if ((conversion == 'b') || (conversion == 'B'))
+		{
+			rowIndex = 1;
+		} else if ((conversion == 'C') || (conversion == 'c'))
+		{
+			rowIndex = 2;
+		} else if ((conversion == 'D') || (conversion == 'd') )
+		{
+			rowIndex = 3;
+		} else if ((conversion == 'E') || (conversion == 'e'))
+		{
+			rowIndex = 4;
+		} else if ((conversion == 'F') || (conversion == 'f'))
+		{
+			rowIndex = 5;
+		} else if ((conversion == 'G') || (conversion == 'g'))
+		{
+			rowIndex = 6;
+		} else if ((conversion == 'H') || (conversion == 'h'))
+		{
+			rowIndex = 7;
+		} else if ((conversion == 'I') || (conversion == 'i'))
+		{
+			rowIndex = 8;
+		} else
+		{
+			rowIndex = 9;
+		}
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+		  if (board[rowIndex][columnindex] == " $") {
+			return "H";
+		  }
+		}
+	}
+	return "M";
+}
+
 	  // sb.append("---------------------------------------------------\n");
 	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
 	  // sb.append("---------------------------------------------------\n");
@@ -64,7 +283,7 @@ public class Board{
 	  // sb.append("|    |    |    |    |    |    |    |    |    |    |\n");
 	  // sb.append("---------------------------------------------------\n");
 	  // System.out.println(sb.toString());
-
+/*
     for(int i=0;i<10;i++){
       for(int j=0;j<10;j++){
         Space currentSpace = grid[i][j];
@@ -75,17 +294,16 @@ public class Board{
         }
       }
     }
+  */
   
   
-  }	
-  
-  public boolean checkOverlap(Space[] placedOn) {
+  public boolean checkOverlap(Ship ship) {
+  	Space[] placedOn = ship.getPlacedOn();
   	for(Space s : placedOn) {
-  		System.out.println("Checking overlap...");
   		if(s.isShipHere() == true)
-  			return true;
+  			return false;
   	}
-  	return false;
+  	return true;
   }
   
   public boolean checkOutOfBounds(Ship ship) {
