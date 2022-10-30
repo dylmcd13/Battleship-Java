@@ -79,13 +79,13 @@ public class Board{
   
   }	
   
-  public boolean checkOverlap(Ship ship) {
-  	Space[] placedOn = ship.getPlacedOn();
+  public boolean checkOverlap(Space[] placedOn) {
   	for(Space s : placedOn) {
+  		System.out.println("Checking overlap...");
   		if(s.isShipHere() == true)
-  			return false;
+  			return true;
   	}
-  	return true;
+  	return false;
   }
   
   public boolean checkOutOfBounds(Ship ship) {

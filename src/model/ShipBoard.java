@@ -36,6 +36,10 @@ public class ShipBoard extends Board{
   public void displayBoard() {
   	super.displayBoard();
   }
+  
+  public boolean checkOverlap( Space[] placedOn) {
+  	return super.checkOverlap(placedOn);
+  }
 
   
 }

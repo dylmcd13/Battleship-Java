@@ -53,4 +53,13 @@ public class Battleship {
   public void setPlacedOn(Space[] placedOn) {
   	this.placedOn = placedOn;
   }
+  
+  public void printPlacedAt() {
+  	System.out.println("Printing Where Battleship is PLaced At!");
+  	for(Space s: placedOn) {
+  		Coordinate c = s.getCoordinate();
+  		c.printCoordinate();
+  		System.out.println("");
+  	}
+  }
 }

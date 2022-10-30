@@ -7,6 +7,7 @@ class Test {
 	Player player1 = new Player();
 	player1.placeShips();
 	player1.carrierShip.printPlacedAt();
+	player1.battleShip.printPlacedAt();
     /*
     Space[][] spaces = b.getGrid();
     Coordinate c = spaces[1][0].getCoordinate();
