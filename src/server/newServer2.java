@@ -50,7 +50,22 @@ public class newServer2 {
         if (HorMfromClient.equals("H"))
         {
             count++;
-            System.out.println(count);
+            if (count == 5)
+            {
+                System.out.println("Carrier has been sunk!");
+            } else if (count == 9)
+            {
+                System.out.println("Battleship has been sunk!");
+            } else if (count == 12)
+            {
+                System.out.println("Cruiser has been sunk!");
+            } else if (count == 15)
+            {
+                System.out.println("Submarine has been sunk!");
+            } else if (count == 17)
+            {
+                System.out.println("Destroyer has been sunk!");
+            }
         }
         System.out.println("Your Attack was a: " + HorMfromClient);
         ss.close();
