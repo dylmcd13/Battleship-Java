@@ -14,7 +14,6 @@ public class newServer2 {
         Board b = new Board();
         Player player1 = new Player();
         player1.placeShips();
-        player1.carrierShip.printPlacedAt();
         
         String [][] updatedBoard =  new String[10][10];
         String [][] HitOrMissBoard = new String[10][10];
