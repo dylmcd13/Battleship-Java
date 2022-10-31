@@ -362,46 +362,49 @@ public class Player {
   
   public void placeShips() {
   	Scanner sc = new Scanner(System.in);
-  	
+  	shipBoard.displayBoardPlaceShips();
   	boolean horizontal = checkHorizontal();
   	System.out.println("Where to place Carrier?");
   	Coordinate carrierCoordinatesFront = getCoordinates("1",sc);
   	Coordinate carrierCoordinatesBack = getCoordinates("2",sc);
   	placeCarrier(carrierCoordinatesFront.getX(),carrierCoordinatesFront.getY(),carrierCoordinatesBack.getX(),carrierCoordinatesBack.getY(),horizontal);
-  	
+  	shipBoard.displayBoardPlaceShips();
+
   	horizontal = checkHorizontal();
   	System.out.println("Where to place Battleship?");
   	Coordinate battleshipCoordinatesFront = getCoordinates("1",sc);
   	Coordinate battleshipCoordinatesBack = getCoordinates("2",sc);
   	placeBattleship(battleshipCoordinatesFront.getX(),battleshipCoordinatesFront.getY(),battleshipCoordinatesBack.getX(),battleshipCoordinatesBack.getY(),horizontal);
-  	
+  	shipBoard.displayBoardPlaceShips();
+
   	horizontal = checkHorizontal();
   	System.out.println("Where to place Cruiser?");
   	Coordinate cruiserCoordinatesFront = getCoordinates("1",sc);
   	Coordinate cruiserCoordinatesBack = getCoordinates("2",sc);
   	placeCruiser(cruiserCoordinatesFront.getX(),cruiserCoordinatesFront.getY(),cruiserCoordinatesBack.getX(),cruiserCoordinatesBack.getY(),horizontal);
-  	
+  	shipBoard.displayBoardPlaceShips();
   	
   	horizontal = checkHorizontal();
   	System.out.println("Where to place Submarine?");
   	Coordinate submarineCoordinatesFront = getCoordinates("1",sc);
   	Coordinate submarineCoordinatesBack = getCoordinates("2",sc);
   	placeSubmarine(submarineCoordinatesFront.getX(),submarineCoordinatesFront.getY(),submarineCoordinatesBack.getX(),submarineCoordinatesBack.getY(),horizontal);
-  	
+  	shipBoard.displayBoardPlaceShips();
   	
   	horizontal = checkHorizontal();
   	System.out.println("Where to place Destroyer?");
   	Coordinate destroyerCoordinatesFront = getCoordinates("1",sc);
   	Coordinate destroyerCoordinatesBack = getCoordinates("2",sc);
   	placeDestroyer(destroyerCoordinatesFront.getX(),destroyerCoordinatesFront.getY(),destroyerCoordinatesBack.getX(),destroyerCoordinatesBack.getY(),horizontal);
-
+    shipBoard.displayBoardPlaceShips();
   }
   
   public Coordinate getCoordinates(String s,Scanner sc) {
   	System.out.print("x"+s+"-coordinate: ");
   	int x = sc.nextInt();
-  	System.out.print("\ny"+s+"-coordinate: ");
+  	System.out.print("y"+s+"-coordinate: ");
   	int y = sc.nextInt();
+    System.out.println();
   	return new Coordinate(x,y);
   }
   

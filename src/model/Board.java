@@ -56,6 +56,37 @@ public class Board{
 		}
 		return updateBoard;
 	}	
+
+	public String[][] displayBoardPlaceShips() {
+		String [][] updateBoard = new String[10][10];
+		System.out.println("BOARD:");
+		StringBuilder sb = new StringBuilder();
+		int num = 0;
+  
+		System.out.print(" ");
+		for (int i = 0 ; i < 10; i++)
+		{
+			  System.out.print(" " + i );
+		}
+		System.out.println("");
+		for (int j = 0; j < 10; j++)
+		{
+		  System.out.print(num++);
+			for (int i = 0; i < 10; i++)
+			{
+			  //System.out.print("grid " + i + " " + j + " " + grid[i][j].isShipHere());
+			  if (grid[i][j].isShipHere() == true) {
+			  updateBoard[i][j]= " $";
+			  System.out.print(updateBoard[i][j]);
+			  } else {
+			  updateBoard[i][j]= " *";
+			  System.out.print(updateBoard[i][j]);
+			  }
+			}
+			System.out.println("");
+		}
+		return updateBoard;
+	}	
   
 	public String[][] displayBoard(String board[][], String x, String y) {
 	  System.out.println("BOARD:");
