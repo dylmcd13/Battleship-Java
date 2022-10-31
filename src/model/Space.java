@@ -35,7 +35,6 @@ public class Space {
   public boolean isShipHere(){
     return shipHere;
   }
-  
   /** 
    * Set shipHere to true to denote that a ship is at this location
    */
